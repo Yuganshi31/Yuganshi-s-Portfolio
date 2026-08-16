@@ -245,21 +245,30 @@
   .card-link .arrow{ transition: transform 0.15s ease; }
   .card:hover .card-link .arrow{ transform: translateX(4px); }
 
-  /* ---------- SKILLS / LOADOUT ---------- */
-  .loadout{ max-width: 1080px; margin: 0 auto; display:grid; grid-template-columns: 1fr 1fr; gap: 40px 64px; }
-  .meter{ margin-bottom: 22px; }
-  .meter:last-child{ margin-bottom:0; }
-  .meter-top{ display:flex; justify-content: space-between; margin-bottom: 8px; }
-  .meter-label{ font-family:'JetBrains Mono', monospace; font-size: 13px; color: var(--ink); }
-  .meter-val{ font-family:'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-dim); }
-  .meter-track{
-    height: 6px; background: var(--bg-panel); border: 1px solid var(--line);
-    border-radius: 2px; overflow:hidden;
-  }
-  .meter-fill{
-    height:100%; background: linear-gradient(90deg, var(--teal), var(--amber));
-    border-radius: 2px;
-  }
+ /* ---------- SKILLS / LOADOUT ---------- */
+.skills-grid{ max-width: 1080px; margin: 0 auto; display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.skill-group{
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.skill-group-head{
+  font-family:'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--amber);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding-bottom: 14px; margin-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+.skill-list{ list-style: none; }
+.skill-list li{
+  font-size: 14.5px; color: var(--ink);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(237,237,230,0.06);
+  display:flex; align-items:center; gap:10px;
+}
+.skill-list li:last-child{ border-bottom: none; }
+.skill-list li::before{ content:"▹"; color: var(--teal); font-size: 12px; }
 
   /* ---------- ABOUT ---------- */
   .about-wrap{ max-width: 1080px; margin: 0 auto; display:grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
@@ -316,7 +325,7 @@
     .stat{ border-right:none; border-bottom: 1px solid var(--line); }
     .stat:last-child{ border-bottom:none; }
     .project-grid{ grid-template-columns: 1fr; }
-    .loadout{ grid-template-columns: 1fr; }
+    .skills-grid{ grid-template-columns: 1fr; }
     .about-wrap{ grid-template-columns: 1fr; }
     section{ padding: 64px 24px; }
     .hero{ padding: 88px 24px 64px; }
@@ -352,16 +361,16 @@
     </div>
     <div class="stat-row">
       <div class="stat">
-        <div class="stat-num">1</div>
-        <div class="stat-label">Year in dev</div>
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Game Projects</div>
       </div>
       <div class="stat">
-        <div class="stat-num">4</div>
-        <div class="stat-label">Titles shipped</div>
+        <div class="stat-num" style="font-size:16px;">Biped / Quadruped / Props</div>
+        <div class="stat-label">Rigging</div>
       </div>
       <div class="stat">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Rig disciplines</div>
+        <div class="stat-num" style="font-size:16px;">Unity / Unreal / Roblox / Maya</div>
+        <div class="stat-label">Engines</div>
       </div>
     </div>
   </div>
@@ -435,34 +444,36 @@
     <span class="section-tag">02</span>
     <h2>Loadout</h2>
   </div>
-  <div class="loadout">
-    <div>
-      <div class="meter">
-        <div class="meter-top"><span class="meter-label">Gameplay Programming</span><span class="meter-val">90%</span></div>
-        <div class="meter-track"><div class="meter-fill" style="width:90%"></div></div>
-      </div>
-      <div class="meter">
-        <div class="meter-top"><span class="meter-label">Level Design</span><span class="meter-val">85%</span></div>
-        <div class="meter-track"><div class="meter-fill" style="width:85%"></div></div>
-      </div>
-      <div class="meter">
-        <div class="meter-top"><span class="meter-label">Systems & Economy Design</span><span class="meter-val">80%</span></div>
-        <div class="meter-track"><div class="meter-fill" style="width:80%"></div></div>
-      </div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-head">Game Design</div>
+      <ul class="skill-list">
+        <li>Gameplay Systems</li>
+        <li>Level Design</li>
+        <li>Mechanics Design</li>
+        <li>Systems & Economy</li>
+        <li>Prototyping</li>
+      </ul>
     </div>
-    <div>
-      <div class="meter">
-        <div class="meter-top"><span class="meter-label">Unity / C#</span><span class="meter-val">92%</span></div>
-        <div class="meter-track"><div class="meter-fill" style="width:92%"></div></div>
-      </div>
-      <div class="meter">
-        <div class="meter-top"><span class="meter-label">3D Rigging (Biped / Quadruped)</span><span class="meter-val">95%</span></div>
-        <div class="meter-track"><div class="meter-fill" style="width:88%"></div></div>
-      </div>
-      <div class="meter">
-        <div class="meter-top"><span class="meter-label">Prop & Mechanical Rigging</span><span class="meter-val">95%</span></div>
-        <div class="meter-track"><div class="meter-fill" style="width:80%"></div></div>
-      </div>
+    <div class="skill-group">
+      <div class="skill-group-head">Game Development</div>
+      <ul class="skill-list">
+        <li>Unity</li>
+        <li>C#</li>
+        <li>Unreal Engine</li>
+        <li>Roblox Studio / Lua</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-head">3D Rigging</div>
+      <ul class="skill-list">
+        <li>Biped Rigging</li>
+        <li>Quadruped Rigging</li>
+        <li>Facial Rigging</li>
+        <li>IK/FK</li>
+        <li>Skinning & Weight Painting</li>
+        <li>Mechanical/Prop Rigging</li>
+      </ul>
     </div>
   </div>
 </section>
